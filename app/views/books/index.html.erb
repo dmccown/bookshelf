@@ -1,6 +1,12 @@
-<% for book in @books do %>  
-  <h2><%=h book.title %></h2>  
-  <p><%= book.thoughts %></p>  
-<% end %>
+<% title 'My Books' %>
 
-<%= will_paginate @books %>  
+<table class="table">
+  <th>Title</th>
+  <% for book in @books do %>
+    <tr>
+      <td><%=h book.title %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @books, renderer: BootstrapPagination::Rails  %>
