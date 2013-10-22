@@ -4,7 +4,7 @@
   <th>Title</th>
   <% for book in @books do %>
     <tr>
-      <td><%=h book.title %></td>
+      <td><%=link_to(h(book.title), book_path(book)) %></td>
     </tr>
   <% end %>
 </table>
