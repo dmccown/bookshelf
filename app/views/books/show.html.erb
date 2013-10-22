@@ -1,5 +1,8 @@
+<%= javascript_include_tag 'application' %>
+<%= csrf_meta_tag %>
 
-<h2><%=link_to(h(@book.title), book_path(@book)) %></h2>
+<% title @book.title %>
+
 <p><%= @book.thoughts %></p>
 
 <% if @comments %>
@@ -22,3 +25,9 @@
 
   <%= form.submit 'Save' %>
 <% end %>
+
+<p>
+  Admin Actions:
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+  <%= link_to 'Delete', book_path(@book.id), :method => :delete, confirm: "Are you sure?" %>
+</p>
