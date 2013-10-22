@@ -8,4 +8,17 @@
   <% for comment in @comments do %>
     <p><strong><%=h(comment.author) %></strong>: <%=h comment.text %>
   <% end %>
+
+  <%= will_paginate @comments, renderer: BootstrapPagination::Rails %>
+<% end %>
+
+<h3>Post Your Comment</h3>
+<%= form_for([@book, Comment.new]) do |form| %>
+  <p><%= form.label :author %></p>
+  <p><%= form.text_field :author %></p>
+
+  <p><%= form.label :text, 'Comment' %></p>
+  <p><%= form.text_area :text %></p>
+
+  <%= form.submit 'Save' %>
 <% end %>
